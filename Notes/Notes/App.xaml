@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Notes.App">
+    <Application.Resources>
+        <Thickness x:Key="PageMargin">20</Thickness>
+        <!--Colors-->
+        <Color x:Key="AppBackgroundColor">WhiteSmoke</Color>
+        <Color x:Key="iOSNavigationBarColor">WhiteSmoke</Color>
+        <Color x:Key="AndriodNavigationBarColor">#2196F3</Color>
+        <Color x:Key="iOSNavigationBarTextColor">Black</Color>
+        <Color x:Key="AndriodNavigationBarTextColor">White</Color>
+        
+        <!--Implicit styles-->
+        <Style TargetType="{x:Type NavigationPage}">
+            <Setter Property="BarBackgroundColor" 
+                    Value="{OnPlatform iOS={StaticResource iOSNavigationBarColor},
+                Android={StaticResource AndriodNavigationBarColor}}"/>
+            <Setter Property="BarTextColor"
+                    Value="{OnPlatform iOS={StaticResource iOSNavigationBarTextColor},
+                Android={StaticResource AndriodNavigationBarTextColor}}"/>
+        </Style>
+        <Style TargetType="{x:Type ContentPage}">
+            <Setter Property="BackgroundColor" Value="{StaticResource AppBackgroundColor}"/>
+        </Style>
+    </Application.Resources>
+</Application>
