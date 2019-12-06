@@ -8,6 +8,8 @@ namespace Notes
     public partial class App : Application
     {
         static NoteDatabase database;
+        const string displayText = "displayText";
+        public string DisplayText { get; set; }
         public static NoteDatabase Database {
             get {
                 if (database == null)
@@ -29,14 +31,22 @@ namespace Notes
 
         protected override void OnStart()
         {
+            Console.WriteLine("OnStart");
+            if (Properties.ContainsKey(displayText))
+            {
+                DisplayText = (string)Properties[displayText];
+            }
         }
 
         protected override void OnSleep()
         {
+            Console.WriteLine("OnSleep");
+            Properties[displayText] = DisplayText;
         }
 
         protected override void OnResume()
         {
+            Console.WriteLine("OnResume");
         }
     }
 }

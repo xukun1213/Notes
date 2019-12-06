@@ -11,11 +11,11 @@ namespace Notes
             InitializeComponent();
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            listView.ItemsSource = await App.Database.GetNotesAsync();
+            entry.Text = (Application.Current as App).DisplayText;
+            //listView.ItemsSource = await App.Database.GetNotesAsync();
         }
 
         private async void OnNoteAddedClicked(object sender, EventArgs e)
@@ -35,6 +35,10 @@ namespace Notes
                     BindingContext = e.SelectedItem as Note
                 });
             }
+        }
+        private void OnEntryCompleted(object sender, EventArgs e)
+        {
+            (Application.Current as App).DisplayText = entry.Text;
         }
     }
 }
