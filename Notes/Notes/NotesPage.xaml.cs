@@ -11,11 +11,10 @@ namespace Notes
             InitializeComponent();
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
-            entry.Text = (Application.Current as App).DisplayText;
-            //listView.ItemsSource = await App.Database.GetNotesAsync();
+            listView.ItemsSource = await App.Database.GetNotesAsync();
         }
 
         private async void OnNoteAddedClicked(object sender, EventArgs e)
@@ -36,9 +35,12 @@ namespace Notes
                 });
             }
         }
-        private void OnEntryCompleted(object sender, EventArgs e)
+        private async void OnLoginClicked(object sender, EventArgs e)
         {
-            (Application.Current as App).DisplayText = entry.Text;
+            await Navigation.PushAsync(new Login
+            {
+                BindingContext = new LoginViewModel()
+            });
         }
     }
 }

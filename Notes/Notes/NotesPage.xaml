@@ -12,17 +12,15 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="+" Clicked="OnNoteAddedClicked"/>
+        <ToolbarItem Text="登录" Clicked="OnLoginClicked"/>
     </ContentPage.ToolbarItems>
 
-    <!--<ListView x:Name="listView" Margin="{StaticResource PageMargin}" ItemSelected="OnListViewItemSelected">
+    <ListView x:Name="listView" Margin="{StaticResource PageMargin}" ItemSelected="OnListViewItemSelected">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <TextCell Text="{Binding Text}" Detail="{Binding Date}"/>
             </DataTemplate>
         </ListView.ItemTemplate>
-    </ListView>-->
+    </ListView>
 
-    <StackLayout Margin="{StaticResource PageMargin}">
-        <Entry x:Name="entry" Placeholder="Enter Text here" Completed="OnEntryCompleted"/>
-    </StackLayout>
 </ContentPage>
